@@ -1,13 +1,11 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/Vistaar07/devops3.git'
-            }
-        }
+    tools {
+        nodejs 'NodeJS-24'
+    }
 
+    stages {
         stage('Install Dependencies') {
             steps {
                 dir('devops3') {
