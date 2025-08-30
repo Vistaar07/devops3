@@ -23,7 +23,21 @@ pipeline {
                 }
             }
         }
-    }
-}
+
+        stage('Serve App') { 
+            steps { 
+                dir('devops3') { 
+                    bat 'npm install -g serve' 
+                    bat 'serve -s build -l 3000 &' 
+                } 
+            } 
+        } 
+    } 
  
+    post { 
+        always { 
+            echo 'Pipeline finished' 
+        } 
+    } 
+}
  
